@@ -1,5 +1,4 @@
 ﻿using System;
-using Hangfire.MvcApplication.Jobs;
 using Hangfire.SqlServer;
 using Microsoft.Owin;
 using Owin;
@@ -19,7 +18,9 @@ namespace Hangfire.MvcApplication
                 config.UseServer();
             });
 
-            RecurringJob.AddOrUpdate(() => ConsoleJobs.WriteHello("Recurring Job"), Cron.Minutely);
+            RecurringJob.AddOrUpdate(
+                () => Console.WriteLine("{0} Recurring Job completed successfully!", DateTime.Now.ToString()), 
+                Cron.Minutely);
         }
     }
 }

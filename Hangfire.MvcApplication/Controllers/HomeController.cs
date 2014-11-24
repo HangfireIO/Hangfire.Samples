@@ -1,5 +1,5 @@
-﻿using System.Web.Mvc;
-using Hangfire.MvcApplication.Jobs;
+﻿using System;
+using System.Web.Mvc;
 
 namespace Hangfire.MvcApplication.Controllers
 {
@@ -18,7 +18,7 @@ namespace Hangfire.MvcApplication.Controllers
         [HttpPost]
         public ActionResult Create()
         {
-            BackgroundJob.Enqueue(() => ConsoleJobs.WriteHello("Background Job"));
+            BackgroundJob.Enqueue(() => Console.WriteLine("{0} Background Job completed successfully!", DateTime.Now.ToString()));
 
             return RedirectToAction("Index");
         }

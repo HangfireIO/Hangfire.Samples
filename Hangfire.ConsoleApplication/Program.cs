@@ -19,19 +19,19 @@ namespace Hangfire.ConsoleApplication
 
             using (WebApp.Start<Startup>(endpoint))
             {
-                ConsoleServices.WriteLine();
-                ConsoleServices.WriteLine("Hangfire Server started.");
-                ConsoleServices.WriteLine("Dashboard is available at {0}/hangfire", endpoint);
-                ConsoleServices.WriteLine();
-                ConsoleServices.WriteLine("Type JOB to add a background job.");
-                ConsoleServices.WriteLine("Press ENTER to exit...");
+                Console.WriteLine();
+                Console.WriteLine("{0} Hangfire Server started.", DateTime.Now);
+                Console.WriteLine("{0} Dashboard is available at {1}/hangfire", DateTime.Now, endpoint);
+                Console.WriteLine();
+                Console.WriteLine("{0} Type JOB to add a background job.", DateTime.Now);
+                Console.WriteLine("{0} Press ENTER to exit...", DateTime.Now);
 
                 string command;
                 while ((command = Console.ReadLine()) != String.Empty)
                 {
                     if ("job".Equals(command, StringComparison.OrdinalIgnoreCase))
                     {
-                        BackgroundJob.Enqueue(() => ConsoleServices.WriteLine("Background job completed!"));
+                        BackgroundJob.Enqueue(() => Console.WriteLine("{0} Background job completed successfully!", DateTime.Now.ToString()));
                     }
                 }
             }

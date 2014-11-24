@@ -21,7 +21,9 @@ namespace Hangfire.ConsoleApplication
                 config.UseServer();
             });
 
-            RecurringJob.AddOrUpdate(() => ConsoleServices.WriteLine("Recurring job completed!"), Cron.Minutely);
+            RecurringJob.AddOrUpdate(
+                () => Console.WriteLine("{0} Recurring job completed successfully!", DateTime.Now.ToString()), 
+                Cron.Minutely);
         }
     }
 }
