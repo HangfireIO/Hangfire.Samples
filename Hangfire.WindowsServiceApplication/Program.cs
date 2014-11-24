@@ -16,7 +16,7 @@ namespace Hangfire.WindowsServiceApplication
             // Configure AppDomain parameter to simplify the config – http://stackoverflow.com/a/3501950/1317575
             AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data"));
 
-            LogManager.Adapter = new ConsoleOutLoggerFactoryAdapter(LogLevel.Info, true, false, false, "");
+            LogManager.Adapter = new ConsoleOutLoggerFactoryAdapter(LogLevel.Info, false, false, false, "");
 
             HostFactory.Run(x =>
             {
@@ -30,7 +30,7 @@ namespace Hangfire.WindowsServiceApplication
 
                 x.SetDescription("Hangfire Windows Service Sample");
                 x.SetDisplayName("Hangfire Windows Service Sample");
-                x.SetServiceName("Hangfire Windows Service Sample");
+                x.SetServiceName("hangfire-sample");
             });          
         }
 
@@ -42,12 +42,10 @@ namespace Hangfire.WindowsServiceApplication
             {
                 _host = WebApp.Start<Startup>(Endpoint);
 
-                ConsoleServices.WriteLine();
-                ConsoleServices.WriteLine("Hangfire Server started.");
-                ConsoleServices.WriteLine("Dashboard is available at {0}/hangfire", Endpoint);
-                ConsoleServices.WriteLine();
-                ConsoleServices.WriteLine("Type JOB to add a background job.");
-                ConsoleServices.WriteLine("Press ENTER to exit...");
+                Console.WriteLine();
+                Console.WriteLine("Hangfire Server started.");
+                Console.WriteLine("Dashboard is available at {0}/hangfire", Endpoint);
+                Console.WriteLine();
             }
 
             public void Stop()

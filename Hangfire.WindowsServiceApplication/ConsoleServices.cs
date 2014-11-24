@@ -11,8 +11,6 @@ namespace Hangfire.WindowsServiceApplication
 
         public static void WriteLine(string format, params object[] arg)
         {
-            Console.Write(DateTime.Now);
-            Console.Write(' ');
             Console.WriteLine(format, arg);
         }
     }
