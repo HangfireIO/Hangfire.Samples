@@ -1,5 +1,7 @@
 ﻿using System;
+using Hangfire.Common;
 using Hangfire.Logging;
+using Newtonsoft.Json;
 
 namespace Hangfire.MvcApplication
 {
@@ -12,8 +14,15 @@ namespace Hangfire.MvcApplication
 
         public class TextBufferLog : ILog
         {
-            public bool Log(LogLevel logLevel, Func<string> messageFunc)
+            public bool Log(LogLevel logLevel, Func<string> messageFunc, Exception exception)
             {
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Objects
+                };
+
+                JobHelper.SetSerializerSettings(settings);
+
                 if (messageFunc == null)
                 {
                     return logLevel >= LogLevel.Info;
@@ -21,11 +30,6 @@ namespace Hangfire.MvcApplication
 
                 TextBuffer.WriteLine(messageFunc());
                 return true;
-            }
-
-            public void Log<TException>(LogLevel logLevel, Func<string> messageFunc, TException exception) where TException : Exception
-            {
-                TextBuffer.WriteLine(messageFunc() + Environment.NewLine + exception);
             }
         }
     }
