@@ -19,7 +19,7 @@ namespace Hangfire.MvcApplication
             });
 
             RecurringJob.AddOrUpdate(
-                () => Console.WriteLine("{0} Recurring Job completed successfully!", DateTime.Now.ToString()), 
+                () => TextBuffer.WriteLine("Recurring Job completed successfully!"), 
                 Cron.Minutely);
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
-using Common.Logging;
-using Common.Logging.Simple;
+using Hangfire.Logging;
+using Hangfire.Logging.LogProviders;
 using Microsoft.Owin.Hosting;
 using Topshelf;
 
@@ -16,7 +16,7 @@ namespace Hangfire.WindowsServiceApplication
             // Configure AppDomain parameter to simplify the config – http://stackoverflow.com/a/3501950/1317575
             AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data"));
 
-            LogManager.Adapter = new ConsoleOutLoggerFactoryAdapter(LogLevel.Info, false, false, false, "");
+            LogProvider.SetCurrentLogProvider(new ColouredConsoleLogProvider());
 
             HostFactory.Run(x =>
             {

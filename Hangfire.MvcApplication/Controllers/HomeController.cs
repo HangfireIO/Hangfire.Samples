@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace Hangfire.MvcApplication.Controllers
 {
@@ -7,18 +6,19 @@ namespace Hangfire.MvcApplication.Controllers
     {
         public ActionResult Index()
         {
-            return View((object)MvcApplication.ConsoleOut.ToString());
+            return View((object)TextBuffer.ToString());
         }
 
         public ActionResult Buffer()
         {
-            return Content(MvcApplication.ConsoleOut.ToString());
+            return Content(TextBuffer.ToString());
         }
 
         [HttpPost]
         public ActionResult Create()
         {
-            BackgroundJob.Enqueue(() => Console.WriteLine("{0} Background Job completed successfully!", DateTime.Now.ToString()));
+            BackgroundJob.Enqueue(() => TextBuffer.WriteLine("Background Job completed successfully!"));
+            TextBuffer.WriteLine("Background job has been created.");
 
             return RedirectToAction("Index");
         }
