@@ -11,13 +11,13 @@ namespace Hangfire.MvcApplication
     {
         public void Configuration(IAppBuilder app)
         {
-            app.UseHangfire(config =>
-            {
-                var options = new SqlServerStorageOptions { QueuePollInterval = TimeSpan.FromSeconds(1) };
-                config.UseSqlServerStorage("DefaultConnection", options);
-                config.UseServer();
-            });
+            GlobalConfiguration.Configuration.UseSqlServerStorage(
+                "DefaultConnection",
+                new SqlServerStorageOptions { QueuePollInterval = TimeSpan.FromSeconds(1) });
 
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
+            
             RecurringJob.AddOrUpdate(
                 () => TextBuffer.WriteLine("Recurring Job completed successfully!"), 
                 Cron.Minutely);

@@ -14,12 +14,12 @@ namespace Hangfire.WindowsServiceApplication
             app.UseErrorPage();
             app.UseWelcomePage("/");
 
-            app.UseHangfire(config =>
-            {
-                var options = new SqlServerStorageOptions { QueuePollInterval = TimeSpan.FromSeconds(1) };
-                config.UseSqlServerStorage("DefaultConnection", options);
-                config.UseServer();
-            });
+            GlobalConfiguration.Configuration.UseSqlServerStorage(
+                "DefaultConnection",
+                new SqlServerStorageOptions { QueuePollInterval = TimeSpan.FromSeconds(1) });
+
+            app.UseHangfireDashboard();
+            app.UseHangfireServer();
 
             RecurringJob.AddOrUpdate(
                 () => Console.WriteLine("{0} Recurring job completed successfully!", DateTime.Now.ToString()), 
