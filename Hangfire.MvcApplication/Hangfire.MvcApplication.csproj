@@ -124,10 +124,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="Global.asax" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
+    <None Include="Scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.1.js" />
+    <Content Include="Scripts\jquery-3.7.1.min.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.js" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -147,7 +149,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

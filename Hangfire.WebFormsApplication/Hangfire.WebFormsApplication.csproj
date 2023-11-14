@@ -48,6 +48,9 @@
     <Reference Include="AspNet.ScriptManager.bootstrap, Version=3.4.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.bootstrap.3.4.1\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
     </Reference>
+    <Reference Include="AspNet.ScriptManager.jQuery, Version=3.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AspNet.ScriptManager.jQuery.3.7.0\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
+    </Reference>
     <Reference Include="Hangfire.Core, Version=1.6.15.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hangfire.Core.1.6.15\lib\net45\Hangfire.Core.dll</HintPath>
       <Private>True</Private>
@@ -109,9 +112,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="AspNet.ScriptManager.jQuery">
-      <HintPath>..\packages\AspNet.ScriptManager.jQuery.1.10.2\lib\net45\AspNet.ScriptManager.jQuery.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.ScriptManager.MSAjax">
       <HintPath>..\packages\Microsoft.AspNet.ScriptManager.MSAjax.5.0.0\lib\net45\Microsoft.ScriptManager.MSAjax.dll</HintPath>
@@ -197,8 +197,11 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.7.0.js" />
+    <Content Include="Scripts\jquery-3.7.0.min.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.js" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -233,8 +236,9 @@
     <Content Include="Bundle.config" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Site.Mobile.Master" />
+    <Content Include="Scripts\jquery-3.7.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.7.0.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
